@@ -11,14 +11,18 @@ export default function SignUpForm() {
   const router = useRouter()
   const supabase = createClientComponentClient()
 
-  const handleSignUp = async () => {
-    let { data, error } = await supabase.auth.signUp({
+  const handleSignUp = async (event) => {
+    event.preventDefault()
+    let { error, data } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${location.origin}/auth/callback`
       }
     })
+    if (data.user) {
+      console.log(data)
+    }
     router.refresh()
   }
 
@@ -36,6 +40,7 @@ export default function SignUpForm() {
           type='password'
           name='password'
           placeholder='********'
+          autoComplete='on'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

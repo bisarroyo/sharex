@@ -13,14 +13,18 @@ export default function LogInForm() {
 
   const handleSignIn = async (event) => {
     event.preventDefault()
-    const { data, error } = await supabase.auth.signInWithPassword({
+    let { error, data } = await supabase.auth.signInWithPassword({
       email,
       password
     })
     if (error) {
-      return
+      setErrorMessage('Contraseña incorresta o usuario no registrado')
+      console.log(errorMessage)
     }
-    router.push('/')
+    if (data.user) {
+      console.log(data)
+      router.push('/')
+    }
   }
 
   return (
@@ -36,10 +40,14 @@ export default function LogInForm() {
           type='password'
           placeholder='********'
           value={password}
+          autoComplete='on'
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleSignIn}>Sign in</button>
       </form>
+      <div>
+        <p>{errorMessage}</p>
+      </div>
     </>
   )
 }
