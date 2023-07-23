@@ -1,0 +1,19 @@
+.header {
+  width: 100vw;
+  height: 60px;
+}
+
+.header_navigation {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header_left_side,
+.header_right_side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
