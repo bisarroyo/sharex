@@ -7,6 +7,14 @@ export default async function Home() {
   return (
     <main>
       <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
     </main>
   )
 }
