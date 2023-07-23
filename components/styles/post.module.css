@@ -40,12 +40,11 @@
 .body {
   width: 100%;
   max-width: 380px;
-  padding: 0 10px;
+  margin: 0 10px;
 }
 .body img {
-  width: auto;
+  width: 100%;
   border-radius: 10px;
-  max-width: 370px;
   height: auto;
 }
 

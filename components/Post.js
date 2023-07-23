@@ -34,8 +34,8 @@ export default function Post({ postImage, profileImage }) {
             <Image
               src={profile}
               alt=''
-              width={50}
-              height={50}
+              width={25}
+              height={25}
               priority={false}
             />
           </div>
