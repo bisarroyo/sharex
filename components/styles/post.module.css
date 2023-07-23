@@ -1,8 +1,7 @@
 .post {
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  margin-top: 30px;
   width: 100%;
   max-width: 400px;
   font-size: 20px;
@@ -32,18 +31,22 @@
 }
 
 .head_image {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   overflow: hidden;
 }
 
 .body {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
+  padding: 0 10px;
 }
 .body img {
-  width: 100%;
+  width: auto;
+  border-radius: 10px;
+  max-width: 370px;
+  height: auto;
 }
 
 .footer {
@@ -59,4 +62,7 @@
   justify-content: center;
   flex-direction: row;
   gap: 15px;
+}
+.icon {
+  font-size: 25px;
 }
