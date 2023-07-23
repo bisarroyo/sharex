@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-top: 30px;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   font-size: 20px;
 }
 .head {
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
 }
 .head_user {
@@ -33,14 +33,16 @@
 .head_image {
   width: 35px;
   height: 35px;
-  border-radius: 50%;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .body {
   width: 100%;
-  max-width: 380px;
   margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .body img {
   width: 100%;

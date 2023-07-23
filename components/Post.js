@@ -34,8 +34,8 @@ export default function Post({ postImage, profileImage }) {
             <Image
               src={profile}
               alt=''
-              width={25}
-              height={25}
+              width={35}
+              height={35}
               priority={false}
             />
           </div>
@@ -50,7 +50,7 @@ export default function Post({ postImage, profileImage }) {
         </div>
       </div>
       <div className={styles.body}>
-        <Image src={post} alt='' priority={false} width='300px' height='auto' />
+        <Image src={post} alt='' priority={false} width='auto' height='auto' />
       </div>
       <div className={styles.footer}>
         <div className={styles.footer_left_side}>
