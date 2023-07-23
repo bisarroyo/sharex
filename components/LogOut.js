@@ -1,5 +1,7 @@
 'use client'
 
+import styles from './styles/logout.module.css'
+
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 
@@ -12,5 +14,9 @@ export default function Logout() {
     router.push('/login')
   }
 
-  return <button onClick={handleLogOut}>Log Out</button>
+  return (
+    <button onClick={handleLogOut} className={styles.logout}>
+      Log Out
+    </button>
+  )
 }
