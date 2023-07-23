@@ -5,6 +5,7 @@ import Logout from '@/components/LogOut'
 import styles from './styles/navbar.module.css'
 import Link from 'next/link'
 import Button from './Button'
+import Notification from './Notification'
 
 export default async function Navbar() {
   const supabase = createServerComponentClient({ cookies })
@@ -19,13 +20,21 @@ export default async function Navbar() {
     <header className={styles.header}>
       <nav className={styles.header_navigation}>
         <div className={styles.header_left_side}>
-          <Link href='/'>Sahrex</Link>
+          <Link href='/'>Sharex</Link>
         </div>
         <div className={styles.header_right_side}>
-          {user.email ? (
-            <Button text='Log In' url='/login' />
+          {!user.email ? (
+            <>
+              <p>
+                <Link href='/signUp' className={styles.link}>
+                  Sign Up
+                </Link>{' '}
+                or &nbsp;{' '}
+              </p>
+              <Button text='Log In' url='/login' />
+            </>
           ) : (
-            <Link href='/login'>Login</Link>
+            <Notification />
           )}
         </div>
       </nav>
