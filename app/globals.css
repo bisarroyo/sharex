@@ -21,6 +21,11 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --primary-rgb: 101, 40, 247;
+  --secondary-rgb: 160, 118, 249;
+  --pruple-rgb: 215, 187, 245;
+  --light-purple-rgb: 237, 228, 255;
 }
 
 @media (prefers-color-scheme: dark) {
