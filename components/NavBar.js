@@ -14,8 +14,6 @@ export default async function Navbar() {
     data: { user }
   } = await supabase.auth.getUser()
 
-  console.log(user)
-
   return (
     <header className={styles.header}>
       <nav className={styles.header_navigation}>
@@ -23,10 +21,11 @@ export default async function Navbar() {
           <Link href='/'>Sharex</Link>
         </div>
         <div className={styles.header_right_side}>
-          {!user.email ? (
+          {console.log(user)}
+          {!user?.email ? (
             <>
               <p>
-                <Link href='/signUp' className={styles.link}>
+                <Link href='/signup' className={styles.link}>
                   Sign Up
                 </Link>{' '}
                 or &nbsp;{' '}
@@ -34,7 +33,10 @@ export default async function Navbar() {
               <Button text='Log In' url='/login' />
             </>
           ) : (
-            <Notification />
+            <>
+              <Logout />
+              <Notification />
+            </>
           )}
         </div>
       </nav>
