@@ -1,5 +1,7 @@
 'use client'
 
+import styles from './styles/loginform.module.css'
+
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -29,13 +31,15 @@ export default function LogInForm() {
 
   return (
     <>
-      <form>
+      <form className={styles.form}>
+        <label htmlFor='email'>Email</label>
         <input
           type='email'
           placeholder='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label htmlFor='password'>Password</label>
         <input
           type='password'
           placeholder='********'

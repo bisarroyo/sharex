@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+}
+
+.form input {
+  width: 100%;
+  max-width: 250px;
+  height: 35px;
+  padding: 10px;
+  border: 1px solid rgb(var(--light-purple-rgb));
+  border-radius: 5px;
+  font-size: 16px;
+}
+.form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form button {
+  font-size: 14px;
+  background-color: rgb(var(--primary-rgb));
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+}

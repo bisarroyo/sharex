@@ -24,7 +24,6 @@ import { BsPersonFill } from 'react-icons/bs'
 
 export default function Footer() {
   const path = usePathname()
-  console.log(path)
 
   return (
     <footer className={styles.footer}>
