@@ -1,0 +1,11 @@
+.slide {
+  height: auto;
+}
+.slide img {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+.swiper-pagination {
+  background-color: red;
+}

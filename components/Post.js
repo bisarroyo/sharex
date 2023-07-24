@@ -24,6 +24,7 @@ import { PiShareFatLight } from 'react-icons/pi'
 import styles from './styles/post.module.css'
 import profile from '@/assets/profile/profile.jpg'
 import post from '@/assets/post/post.jpg'
+import PostImage from './PostImage'
 
 export default function Post({ postImage, profileImage }) {
   return (
@@ -50,7 +51,8 @@ export default function Post({ postImage, profileImage }) {
         </div>
       </div>
       <div className={styles.body}>
-        <Image src={post} alt='' priority={false} width='auto' height='auto' />
+        {/* <Image src={post} alt='' priority={false} width='auto' height='auto' /> */}
+        <PostImage />
       </div>
       <div className={styles.footer}>
         <div className={styles.footer_left_side}>

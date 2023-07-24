@@ -1,0 +1,13 @@
+.swiper-pagination {
+  top: 10px;
+  left: 10px;
+  text-align: center;
+  font-size: 14px;
+  height: 20px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(var(--light-purple-rgb), 0.3);
+  border-radius: 10px;
+}
