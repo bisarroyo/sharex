@@ -15,13 +15,13 @@ export default function LogInForm() {
 
   const handleSignIn = async (event) => {
     event.preventDefault()
-    let { error, data } = await supabase.auth.signInWithPassword({
+    let { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
     })
-    if (error) {
+    if (error.message) {
       setErrorMessage('Contraseña incorresta o usuario no registrado')
-      console.log(errorMessage)
+      // console.log(errorMessage)
     }
     if (data.user) {
       console.log(data)
@@ -50,7 +50,7 @@ export default function LogInForm() {
         <button onClick={handleSignIn}>Sign in</button>
       </form>
       <div>
-        <p>{errorMessage}</p>
+        <>{errorMessage && errorMessage}</>
       </div>
     </>
   )
