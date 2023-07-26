@@ -7,7 +7,7 @@ export default function Upload() {
   const { uploading, cloudImageUrl, errorMessage, handleImageChange } =
     useUploadCloudinary()
 
-  const handleUpload = async (file) => {
+  const handleUpload = (file) => {
     handleImageChange(file)
   }
   return (

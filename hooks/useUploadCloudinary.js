@@ -27,6 +27,7 @@ export default function useUploadCloudinary() {
           const { secure_url: url, public_id: publicId } = await res.json()
           const cloudImage = cloudinary.image(publicId)
           cloudImage
+          console.log(publicId)
           setCloudImageUrl(cloudImage)
           setUploading(false)
         } catch (err) {
