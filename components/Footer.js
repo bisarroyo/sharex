@@ -22,6 +22,12 @@ import { BsPerson } from 'react-icons/bs'
 // profile icon fill
 import { BsPersonFill } from 'react-icons/bs'
 
+// create icon
+import { BsPlusCircle } from 'react-icons/bs'
+
+// create icon fill
+import { BsPlusCircleFill } from 'react-icons/bs'
+
 export default function Footer() {
   const path = usePathname()
 
@@ -32,6 +38,13 @@ export default function Footer() {
           <RiHome2Fill className={styles.homeIcon} />
         ) : (
           <RiHome2Line className={styles.homeIcon} />
+        )}
+      </div>
+      <div className={styles.messages}>
+        {path === '/upload' ? (
+          <BsPlusCircle className={styles.createIcon} />
+        ) : (
+          <BsPlusCircleFill className={styles.createIcon} />
         )}
       </div>
       <div className={styles.messages}>
