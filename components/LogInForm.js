@@ -19,13 +19,14 @@ export default function LogInForm() {
       email,
       password
     })
-    if (error.message) {
+    if (error) {
       setErrorMessage('Contraseña incorresta o usuario no registrado')
       // console.log(errorMessage)
     }
     if (data.user) {
       console.log(data)
       router.push('/')
+      router.refresh()
     }
   }
 
