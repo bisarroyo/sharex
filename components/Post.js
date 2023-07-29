@@ -26,7 +26,7 @@ import profile from '@/assets/profile/profile.jpg'
 import post from '@/assets/post/post.jpg'
 import PostImage from './PostImage'
 
-export default function Post({ postImage, profileImage }) {
+export default function Post({ postImages, profileImage, username }) {
   return (
     <section className={styles.post}>
       <div className={styles.head}>
@@ -41,7 +41,7 @@ export default function Post({ postImage, profileImage }) {
             />
           </div>
           <div className={styles.head_user}>
-            <p>Username</p>
+            <p>bisarroyo</p>
           </div>
         </div>
         <div className={styles.head_right_side}>
@@ -52,7 +52,7 @@ export default function Post({ postImage, profileImage }) {
       </div>
       <div className={styles.body}>
         {/* <Image src={post} alt='' priority={false} width='auto' height='auto' /> */}
-        <PostImage />
+        <PostImage postImages={postImages} />
       </div>
       <div className={styles.footer}>
         <div className={styles.footer_left_side}>

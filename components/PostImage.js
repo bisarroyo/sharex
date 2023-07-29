@@ -1,4 +1,7 @@
 'use client'
+
+import { CldImage } from 'next-cloudinary'
+
 import { useRef, useState } from 'react'
 
 // Import Swiper React components
@@ -18,9 +21,7 @@ import './styles/swiper.css'
 import styles from './styles/postimage.module.css'
 import Image from 'next/image'
 
-import post from '@/assets/post/post.jpg'
-
-export default function PostImage() {
+export default function PostImage({ postImages }) {
   return (
     <Swiper
       pagination={{
@@ -30,15 +31,19 @@ export default function PostImage() {
       modules={[Pagination, Navigation]}
       className='mySwiper'
     >
-      <SwiperSlide className={styles.slide}>
-        <Image src={post} alt='' priority={false} width='auto' height='auto' />
-      </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <Image src={post} alt='' priority={false} width='auto' height='auto' />
-      </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <Image src={post} alt='' priority={false} width='auto' height='auto' />
-      </SwiperSlide>
+      {postImages.map((image, index) => {
+        return (
+          <SwiperSlide key={index} className={styles.slide}>
+            <CldImage
+              src={image.urlCloud.publicID}
+              width='500'
+              height='600'
+              sizes='100vw'
+              alt='image post'
+            />
+          </SwiperSlide>
+        )
+      })}
     </Swiper>
   )
 }
