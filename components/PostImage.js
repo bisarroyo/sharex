@@ -35,7 +35,6 @@ export default function PostImage({ postImages }) {
     })
     sliderImages.push(url)
   })
-  console.log(sliderImages)
 
   return (
     <Swiper

@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 
 export default function Upload() {
   const [userAuth, setUserAuth] = useState({})
-  const [message, setMessage] = useState('sin mensaje')
+  const [message, setMessage] = useState('')
   const { uploading, cloudImageUrl, errorMessage, handleImageChange } =
     useUploadCloudinary()
 
@@ -54,7 +54,8 @@ export default function Upload() {
   }, [cloudImageUrl, supabase, setMessage])
 
   if (!user) {
-    router.push('/')
+    router.push('/login')
+    return
   }
   return (
     <div>

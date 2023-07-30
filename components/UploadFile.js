@@ -6,8 +6,6 @@ import { useState, useCallback, useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineCloudUpload, AiOutlineDrag } from 'react-icons/ai'
 
-import { CldImage } from 'next-cloudinary'
-
 export default function UploadFile({ uploading, handleUpload }) {
   const [selectedFile, setSelectedFile] = useState(null)
 
@@ -54,13 +52,6 @@ export default function UploadFile({ uploading, handleUpload }) {
         {selectedFile && (
           <>
             <div className={styles.imageLoaded}>
-              {/* <CldImage
-                width='500'
-                height='600'
-                src='sharex/mbr3hhtsk9hx1b2nyyaw'
-                sizes='100vw'
-                alt='Description of my image'
-              /> */}
               <Image
                 fill={true}
                 style={{ objectFit: 'contain' }}
