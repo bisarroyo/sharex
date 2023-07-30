@@ -9,6 +9,8 @@ export default async function Home() {
 
   let { data: posts, error } = await supabase.from('posts').select('*')
 
+  console.log(posts)
+
   return (
     <main className={styles.main}>
       {posts.map((post) => {

@@ -4,11 +4,17 @@ import UploadFile from '@/components/UploadFile'
 import useUploadCloudinary from '@/hooks/useUploadCloudinary'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Upload() {
-  const { message, setMessage } = useState('sin mensaje')
+  const [userAuth, setUserAuth] = useState({})
+  const [message, setMessage] = useState('sin mensaje')
   const { uploading, cloudImageUrl, errorMessage, handleImageChange } =
     useUploadCloudinary()
+
+  const { user } = userAuth
+
+  const router = useRouter()
 
   const supabase = createClientComponentClient()
 
@@ -16,8 +22,16 @@ export default function Upload() {
     handleImageChange(file)
   }
   useEffect(() => {
-    const insertPost = async () => {
+    const getUser = async () => {
       const { data } = await supabase.auth.getUser()
+      setUserAuth(data)
+    }
+    getUser()
+  }, [supabase.auth])
+  console.log(user)
+
+  useEffect(() => {
+    const insertPost = async () => {
       await supabase.from('posts').insert([
         {
           images: [
@@ -26,16 +40,22 @@ export default function Upload() {
               urlCloud: cloudImageUrl
             }
           ],
-          user: data.user.id,
+          user: user.id,
           order: 1
         }
       ])
+      router.push('/')
+      router.refresh()
     }
     if (cloudImageUrl) {
       insertPost()
-      // setMessage('cargado exitosamente')
+      setMessage('cargado exitosamente')
     }
   }, [cloudImageUrl, supabase, setMessage])
+
+  if (!user) {
+    router.push('/')
+  }
   return (
     <div>
       <h1>Upload</h1>
