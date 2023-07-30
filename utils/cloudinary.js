@@ -1,6 +1,6 @@
 // imports from cloudinary
 import { Cloudinary } from '@cloudinary/url-gen'
-const CLOUD_NAME = 'dlxx58bml'
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 
 export const API = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
