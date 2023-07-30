@@ -13,23 +13,29 @@ export default function useUploadCloudinary() {
   useEffect(() => {
     if (image) {
       const fetchData = async () => {
+        const dataUrl = []
         try {
           setUploading(true)
-          const data = new FormData()
-          data.append('upload_preset', 'sharex')
-          data.append('file', image)
-          data.append('timestamp', Date.now() / 1000)
-          data.append('api_key', 419246144839172)
-          const res = await fetch(API, {
-            method: 'POST',
-            body: data
+
+          const uploaders = image.map(async (image) => {
+            const data = new FormData()
+            data.append('upload_preset', 'sharex')
+            data.append(`file`, image)
+            data.append('timestamp', Date.now() / 1000)
+            data.append('api_key', 419246144839172)
+            const res = await fetch(API, {
+              method: 'POST',
+              body: data
+            })
+            const { secure_url: url, public_id: publicId } = await res.json()
+            const cloudImage = cloudinary.image(publicId)
+            cloudImage
+            dataUrl.push(cloudImage)
           })
-          const { secure_url: url, public_id: publicId } = await res.json()
-          const cloudImage = cloudinary.image(publicId)
-          cloudImage
-          console.log(publicId)
-          setCloudImageUrl(cloudImage)
-          setUploading(false)
+          Promise.all(uploaders).then(() => {
+            setUploading(false)
+            setCloudImageUrl(dataUrl)
+          })
         } catch (err) {
           setErrorMessage('Error uploading file')
           setUploading(false)
@@ -37,7 +43,7 @@ export default function useUploadCloudinary() {
       }
       fetchData()
     }
-  }, [image])
+  }, [image, cloudImageUrl])
 
   const handleImageChange = (image) => {
     setImage(image)

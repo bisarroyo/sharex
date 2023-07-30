@@ -11,10 +11,10 @@ export default function UploadFile({ uploading, handleUpload }) {
 
   const onDrop = useCallback((acceptedFiles) => {
     // Si se selecciona más de un archivo, seleccionamos solo el primero
-    setSelectedFile(acceptedFiles[0])
+    setSelectedFile(acceptedFiles)
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    maxFiles: 1,
+    maxFiles: 10,
     acceptedFiles: '.jpg,.png,.webp',
     onDrop: (acceptedFiles, fileRejections) => {
       if (fileRejections.length) {
@@ -52,12 +52,16 @@ export default function UploadFile({ uploading, handleUpload }) {
         {selectedFile && (
           <>
             <div className={styles.imageLoaded}>
-              <Image
-                fill={true}
-                style={{ objectFit: 'contain' }}
-                src={URL.createObjectURL(selectedFile)}
-                alt='Archivo seleccionado'
-              />
+              {selectedFile.map((file, index) => (
+                <div key={index}>
+                  <Image
+                    fill={true}
+                    style={{ objectFit: 'contain' }}
+                    src={URL.createObjectURL(file)}
+                    alt='Archivo seleccionado'
+                  />
+                </div>
+              ))}
             </div>
             <button
               onClick={() => handleUpload(selectedFile)}

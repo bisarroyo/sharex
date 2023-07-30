@@ -18,9 +18,6 @@ export default function Upload() {
 
   const supabase = createClientComponentClient()
 
-  const handleUpload = (file) => {
-    handleImageChange(file)
-  }
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser()
@@ -28,40 +25,40 @@ export default function Upload() {
     }
     getUser()
   }, [supabase.auth])
-  console.log(user)
 
   useEffect(() => {
     const insertPost = async () => {
-      await supabase.from('posts').insert([
+      const { data, error } = await supabase.from('posts').insert([
         {
-          images: [
-            {
-              id: 1,
-              urlCloud: cloudImageUrl
-            }
-          ],
           user: user.id,
-          order: 1
+          order: 1,
+          is_public: true
         }
       ])
+      // cloudImageUrl.map(async (image) => {
+      //   await supabase.from('post_images').insert([
+      //     {
+      //       post_id:
+      //     }
+      //   ])
+      // })
       router.push('/')
       router.refresh()
     }
     if (cloudImageUrl) {
+      console.log('se ejecuta esto')
+      console.log(cloudImageUrl)
       insertPost()
       setMessage('cargado exitosamente')
     }
-  }, [cloudImageUrl, supabase, setMessage])
-
-  if (!user) {
-    router.push('/login')
-    return
+  }, [cloudImageUrl, supabase, setMessage, router, user])
+  const handleUpload = (file) => {
+    handleImageChange(file)
   }
   return (
     <div>
       <h1>Upload</h1>
       <UploadFile uploading={uploading} handleUpload={handleUpload} />
-      {message && <p>{setMessage}</p>}
     </div>
   )
 }

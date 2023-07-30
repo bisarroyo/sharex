@@ -27,14 +27,14 @@ import styles from './styles/postimage.module.css'
 export default function PostImage({ postImages }) {
   let sliderImages = []
 
-  postImages.forEach((element) => {
-    const url = getCldImageUrl({
-      width: 960,
-      height: 600,
-      src: element.urlCloud.publicID
-    })
-    sliderImages.push(url)
-  })
+  // postImages.forEach((element) => {
+  //   const url = getCldImageUrl({
+  //     width: 960,
+  //     height: 600,
+  //     src: element.urlCloud.publicID
+  //   })
+  //   sliderImages.push(url)
+  // })
 
   return (
     <Swiper
