@@ -1,7 +1,5 @@
 'use client'
 
-import { CldImage } from 'next-cloudinary'
-
 import { useRef, useState } from 'react'
 
 // Import Swiper React components
@@ -10,7 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules'
 
-import post from '@/assets/post/post.jpg'
 import Image from 'next/image'
 import { getCldImageUrl } from 'next-cloudinary'
 

@@ -28,33 +28,25 @@ export default function Upload() {
 
   useEffect(() => {
     const insertPost = async () => {
-      const { data, error } = await supabase.from('posts').insert([
+      const { data: posts, error } = await supabase.from('posts').insert([
         {
           user: user.id,
           order: 1,
           is_public: true
         }
       ])
-      // cloudImageUrl.map(async (image) => {
-      //   await supabase.from('post_images').insert([
-      //     {
-      //       post_id:
-      //     }
-      //   ])
-      // })
-      router.push('/')
+      // router.push('/')
       router.refresh()
     }
     if (cloudImageUrl) {
-      console.log('se ejecuta esto')
-      console.log(cloudImageUrl)
       insertPost()
-      setMessage('cargado exitosamente')
     }
-  }, [cloudImageUrl, supabase, setMessage, router, user])
+  }, [cloudImageUrl, supabase, router, user])
+
   const handleUpload = (file) => {
     handleImageChange(file)
   }
+
   return (
     <div>
       <h1>Upload</h1>

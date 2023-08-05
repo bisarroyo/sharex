@@ -11,9 +11,9 @@ export default function useUploadCloudinary() {
   const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
+    const dataUrl = []
     if (image) {
       const fetchData = async () => {
-        const dataUrl = []
         try {
           setUploading(true)
 
@@ -29,21 +29,20 @@ export default function useUploadCloudinary() {
             })
             const { secure_url: url, public_id: publicId } = await res.json()
             const cloudImage = cloudinary.image(publicId)
-            cloudImage
             dataUrl.push(cloudImage)
           })
-          Promise.all(uploaders).then(() => {
-            setUploading(false)
-            setCloudImageUrl(dataUrl)
-          })
+          await Promise.all(uploaders)
+          setUploading(false)
+          setCloudImageUrl(dataUrl)
         } catch (err) {
           setErrorMessage('Error uploading file')
           setUploading(false)
+          return []
         }
       }
       fetchData()
     }
-  }, [image, cloudImageUrl])
+  }, [image])
 
   const handleImageChange = (image) => {
     setImage(image)

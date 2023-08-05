@@ -6,6 +6,20 @@ import { useState, useCallback, useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineCloudUpload, AiOutlineDrag } from 'react-icons/ai'
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+// Customize swiper
+import './styles/swiper.css'
+
 export default function UploadFile({ uploading, handleUpload }) {
   const [selectedFile, setSelectedFile] = useState(null)
 
@@ -52,16 +66,27 @@ export default function UploadFile({ uploading, handleUpload }) {
         {selectedFile && (
           <>
             <div className={styles.imageLoaded}>
-              {selectedFile.map((file, index) => (
-                <div key={index}>
-                  <Image
-                    fill={true}
-                    style={{ objectFit: 'contain' }}
-                    src={URL.createObjectURL(file)}
-                    alt='Archivo seleccionado'
-                  />
-                </div>
-              ))}
+              <Swiper
+                pagination={{
+                  type: 'fraction'
+                }}
+                navigation={false}
+                modules={[Pagination, Navigation]}
+                className='mySwiper'
+              >
+                {selectedFile.map((file, index) => (
+                  <SwiperSlide key={index} className={styles.slide}>
+                    <Image
+                      // fill={true}
+                      // style={{ objectFit: 'contain' }}
+                      src={URL.createObjectURL(file)}
+                      alt='Archivo seleccionado'
+                      width='500'
+                      height='500'
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
             <button
               onClick={() => handleUpload(selectedFile)}
