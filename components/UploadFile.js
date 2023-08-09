@@ -2,7 +2,7 @@
 
 import styles from './styles/uploadfile.module.css'
 import Image from 'next/image'
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineCloudUpload, AiOutlineDrag } from 'react-icons/ai'
 
@@ -73,16 +73,15 @@ export default function UploadFile({ uploading, handleUpload }) {
                 navigation={false}
                 modules={[Pagination, Navigation]}
                 className='mySwiper'
+                style={{ width: '100%', height: '100%' }}
               >
                 {selectedFile.map((file, index) => (
                   <SwiperSlide key={index} className={styles.slide}>
                     <Image
-                      // fill={true}
-                      // style={{ objectFit: 'contain' }}
                       src={URL.createObjectURL(file)}
                       alt='Archivo seleccionado'
-                      width='500'
-                      height='500'
+                      fill={true}
+                      style={{ objectFit: 'contain' }}
                     />
                   </SwiperSlide>
                 ))}

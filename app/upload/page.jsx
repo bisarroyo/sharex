@@ -28,13 +28,12 @@ export default function Upload() {
 
   useEffect(() => {
     const insertPost = async () => {
-      const { data: posts, error } = await supabase.from('posts').insert([
-        {
-          user: user.id,
-          order: 1,
-          is_public: true
-        }
-      ])
+      const { data: posts, error } = await supabase.from('posts').insert({
+        user: user.id,
+        order: 1,
+        is_public: true
+        // images: cloudImageUrl
+      })
       // router.push('/')
       router.refresh()
     }

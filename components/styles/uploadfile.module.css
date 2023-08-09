@@ -50,3 +50,8 @@
 .button:hover {
   background-color: gray;
 }
+.mySwiper {
+  background-color: red;
+  height: 300px;
+  width: 500px;
+}
