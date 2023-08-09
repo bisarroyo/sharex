@@ -1,24 +1,11 @@
 'use client'
 
 import styles from './styles/uploadfile.module.css'
-import Image from 'next/image'
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineCloudUpload, AiOutlineDrag } from 'react-icons/ai'
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-// import required modules
-import { Pagination, Navigation } from 'swiper/modules'
-
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-
-// Customize swiper
-import './styles/swiper.css'
+import SwiperComponent from '@/components/SwiperComponent'
 
 export default function UploadFile({ uploading, handleUpload }) {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -66,26 +53,7 @@ export default function UploadFile({ uploading, handleUpload }) {
         {selectedFile && (
           <>
             <div className={styles.imageLoaded}>
-              <Swiper
-                pagination={{
-                  type: 'fraction'
-                }}
-                navigation={false}
-                modules={[Pagination, Navigation]}
-                className='mySwiper'
-                style={{ width: '100%', height: '100%' }}
-              >
-                {selectedFile.map((file, index) => (
-                  <SwiperSlide key={index} className={styles.slide}>
-                    <Image
-                      src={URL.createObjectURL(file)}
-                      alt='Archivo seleccionado'
-                      fill={true}
-                      style={{ objectFit: 'contain' }}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              <SwiperComponent images={selectedFile} />
             </div>
             <button
               onClick={() => handleUpload(selectedFile)}
