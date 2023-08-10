@@ -7,7 +7,7 @@ import Notification from './Notification'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
-export default async function Navbar() {
+export default async function NavBar() {
   const supabase = createServerComponentClient({ cookies })
 
   const {
