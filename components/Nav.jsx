@@ -2,10 +2,10 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
-  Link,
-  Button
+  NavbarItem
 } from '@nextui-org/navbar'
+import { Button } from '@nextui-org/button'
+import { Link } from '@nextui-org/link'
 
 export default function Nav() {
   return (
