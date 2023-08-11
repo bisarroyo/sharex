@@ -15,11 +15,12 @@ import PostImage from './PostImage'
 
 export default function Post({ postImages, profileImage, username }) {
   return (
-    <section className={styles.post}>
-      <div className={styles.head}>
-        <div className={styles.head_left_side}>
-          <div className={styles.head_image}>
+    <section className='flex flex-col mt-3 w-full text-sm'>
+      <div className='flex flex-row justify-between mx-2 mb-1'>
+        <div className='flex flex-row justify-end items-start gap-3'>
+          <div className='w-8 h-8'>
             <Image
+              className='rounded-full'
               src={profile}
               alt=''
               width={35}
@@ -27,25 +28,25 @@ export default function Post({ postImages, profileImage, username }) {
               priority={false}
             />
           </div>
-          <div className={styles.head_user}>
+          <div className='text-base'>
             <p>bisarroyo</p>
           </div>
         </div>
-        <div className={styles.head_right_side}>
-          <div className={styles.head_options}>
+        <div className='flex justify-end items-center mr-2'>
+          <div className=''>
             <SlOptions />
           </div>
         </div>
       </div>
-      <div className={styles.body}>
+      <div className='w-full flex justify-center items-center'>
         <Image src={post} alt='' priority={false} width='auto' height='auto' />
         {/* <PostImage postImages={postImages} /> */}
       </div>
-      <div className={styles.footer}>
-        <div className={styles.footer_left_side}>
+      <div className='flex justify-between p-2'>
+        <div className=''>
           <BookmarkBtn />
         </div>
-        <div className={styles.footer_right_side}>
+        <div className='flex justify-center flex-row gap-3'>
           <IconShare />
           <IconComment />
           <LikeBtn />
