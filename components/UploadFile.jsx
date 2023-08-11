@@ -1,4 +1,5 @@
 'use client'
+import { Button } from '@nextui-org/button'
 
 import styles from './styles/uploadfile.module.css'
 import { useState, useCallback } from 'react'
@@ -39,7 +40,7 @@ export default function UploadFile({ uploading, handleUpload }) {
               <p>Suelta el archivo aquí...</p>
             </div>
           ) : (
-            <div>
+            <div className='flex justify-center flex-col items-center'>
               <div className={styles.uploadIcon}>
                 <AiOutlineCloudUpload />
               </div>
@@ -55,12 +56,14 @@ export default function UploadFile({ uploading, handleUpload }) {
             <div className={styles.imageLoaded}>
               <SwiperComponent images={selectedFile} />
             </div>
-            <button
+            <Button
+              className='mt-6'
+              color='primary'
               onClick={() => handleUpload(selectedFile)}
-              className={styles.button}
+              isLoading={uploading}
             >
               {uploading ? 'Cargando...' : 'Subir'}
-            </button>
+            </Button>
           </>
         )}
       </div>

@@ -1,25 +1,12 @@
 import Image from 'next/image'
 
+import LikeBtn from '@/components/LikeBtn'
+import IconComment from '@/components/CommentBtn'
+import IconShare from '@/components/ShareBtn'
+import BookmarkBtn from '@/components/BookmarkBtn'
+
 // options icon
 import { SlOptions } from 'react-icons/sl'
-
-// bookmark icon no saved
-import { BsBookmarkFill } from 'react-icons/bs'
-
-// bookmark icon saved post
-import { BsBookmarkCheckFill } from 'react-icons/bs'
-
-// No liked post icon
-import { BsHeart } from 'react-icons/bs'
-
-// Liked post icon
-import { BsHeartFill } from 'react-icons/bs'
-
-// Cooments Icon
-import { BiComment } from 'react-icons/bi'
-
-// Send Icon
-import { PiShareFatLight } from 'react-icons/pi'
 
 import styles from './styles/post.module.css'
 import profile from '@/assets/profile/profile.jpg'
@@ -56,20 +43,12 @@ export default function Post({ postImages, profileImage, username }) {
       </div>
       <div className={styles.footer}>
         <div className={styles.footer_left_side}>
-          <div className={styles.footer_save}>
-            <BsBookmarkFill className={styles.icon} />
-          </div>
+          <BookmarkBtn />
         </div>
         <div className={styles.footer_right_side}>
-          <div className={styles.footer_share}>
-            <PiShareFatLight className={styles.icon} />
-          </div>
-          <div className={styles.footer_comment}>
-            <BiComment className={styles.icon} />
-          </div>
-          <div className={styles.footer_like}>
-            <BsHeart className={styles.icon} />
-          </div>
+          <IconShare />
+          <IconComment />
+          <LikeBtn />
         </div>
       </div>
     </section>
