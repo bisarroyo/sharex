@@ -8,7 +8,6 @@ import BookmarkBtn from '@/components/BookmarkBtn'
 // options icon
 import { SlOptions } from 'react-icons/sl'
 
-import styles from './styles/post.module.css'
 import profile from '@/assets/profile/profile.jpg'
 import post from '@/assets/post/post.jpg'
 import PostImage from './PostImage'
