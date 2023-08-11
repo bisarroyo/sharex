@@ -1,7 +1,6 @@
 'use client'
 import { Button } from '@nextui-org/button'
 
-import styles from './styles/uploadfile.module.css'
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlineCloudUpload, AiOutlineDrag } from 'react-icons/ai'
@@ -29,19 +28,19 @@ export default function UploadFile({ uploading, handleUpload }) {
 
   return (
     <>
-      <div className={styles.dropContainer}>
-        <div {...getRootProps()} className={styles.dropBox}>
+      <div className='w-full text-center h-auto cursor-pointer flex justify-center flex-col items-center '>
+        <div {...getRootProps()} className='py-7'>
           <input {...getInputProps()} />
           {isDragActive ? (
             <div>
-              <div className={styles.uploadIcon}>
+              <div className=''>
                 <AiOutlineDrag />
               </div>
               <p>Suelta el archivo aquí...</p>
             </div>
           ) : (
             <div className='flex justify-center flex-col items-center'>
-              <div className={styles.uploadIcon}>
+              <div className=''>
                 <AiOutlineCloudUpload />
               </div>
               <p>
@@ -53,7 +52,7 @@ export default function UploadFile({ uploading, handleUpload }) {
         </div>
         {selectedFile && (
           <>
-            <div className={styles.imageLoaded}>
+            <div className='relative w-screen h-96 flex justify-center flex-col items-center '>
               <SwiperComponent images={selectedFile} />
             </div>
             <Button

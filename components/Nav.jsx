@@ -19,7 +19,7 @@ export default async function Nav() {
   return (
     <Navbar shouldHideOnScroll className='border-b'>
       <NavbarBrand>
-        <p className='font-bold text-inherit'>ACME</p>
+        <p className='font-bold text-inherit'>SHAREX</p>
       </NavbarBrand>
       <NavbarContent justify='end'>
         {user ? (
