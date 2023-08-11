@@ -17,7 +17,6 @@ export default async function Home() {
         return (
           <>
             <Post key={post.id} postImages={post.images} />
-            <Button>Click me</Button>
           </>
         )
       })}

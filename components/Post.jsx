@@ -51,8 +51,8 @@ export default function Post({ postImages, profileImage, username }) {
         </div>
       </div>
       <div className={styles.body}>
-        {/* <Image src={post} alt='' priority={false} width='auto' height='auto' /> */}
-        <PostImage postImages={postImages} />
+        <Image src={post} alt='' priority={false} width='auto' height='auto' />
+        {/* <PostImage postImages={postImages} /> */}
       </div>
       <div className={styles.footer}>
         <div className={styles.footer_left_side}>
