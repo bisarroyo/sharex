@@ -2,7 +2,6 @@ import { Providers } from './providers'
 
 import './globals.css'
 import { Inter } from 'next/font/google'
-import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 
@@ -20,9 +19,11 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={inter.className}>
         <Providers>
-          <Nav />
-          {children}
-          <Footer />
+          <div className='dark text-foreground bg-background'>
+            <Nav />
+            {children}
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>
