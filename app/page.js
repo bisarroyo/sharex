@@ -1,6 +1,5 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-import styles from './page.module.css'
 import { Button } from '@nextui-org/button'
 import Post from '@/components/Post'
 
@@ -12,7 +11,7 @@ export default async function Home() {
   console.log(posts)
 
   return (
-    <main className={styles.main}>
+    <main className=''>
       {posts.map((post) => {
         return (
           <>
