@@ -15,7 +15,6 @@ import PostImage from './PostImage'
 export default function Post({ postImages, profileImage, username }) {
   return (
     <section className='flex flex-col mt-3 w-full text-sm'>
-      <Divider className='my-2' />
       <div className='flex flex-row justify-between mx-2 mb-2'>
         <div className='flex flex-row justify-end items-start gap-3'>
           <div className='w-8 h-8'>
@@ -52,6 +51,7 @@ export default function Post({ postImages, profileImage, username }) {
           <LikeBtn />
         </div>
       </div>
+      <Divider className='mt-2' />
     </section>
   )
 }
