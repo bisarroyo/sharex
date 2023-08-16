@@ -1,5 +1,5 @@
 import MessageInbox from '@/components/MessageInbox'
-// import ModalMessages from '@/components/ModalMessages'
+import ModalMessages from '@/components/ModalMessages'
 
 export default function Messages() {
   return (
@@ -35,7 +35,7 @@ export default function Messages() {
         username='bisarroyo'
         lastMessage='mensaje de prueba'
       />
-      {/* <ModalMessages /> */}
+      <ModalMessages />
     </main>
   )
 }

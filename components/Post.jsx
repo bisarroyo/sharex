@@ -4,6 +4,7 @@ import LikeBtn from '@/components/LikeBtn'
 import IconComment from '@/components/CommentBtn'
 import IconShare from '@/components/ShareBtn'
 import BookmarkBtn from '@/components/BookmarkBtn'
+import PostMenu from '@/components/PostMenu'
 
 // options icon
 import { SlOptions } from 'react-icons/sl'
@@ -33,7 +34,7 @@ export default function Post({ postImages, profileImage, username }) {
         </div>
         <div className='flex justify-end items-center mr-2'>
           <div className=''>
-            <SlOptions />
+            <PostMenu />
           </div>
         </div>
       </div>
