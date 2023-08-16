@@ -15,8 +15,6 @@ import {
   DropdownItem
 } from '@nextui-org/dropdown'
 
-import { Button } from '@nextui-org/button'
-
 export default function PostMenu() {
   return (
     <Dropdown backdrop='blur'>

@@ -8,11 +8,9 @@ export default async function Home() {
 
   let { data: posts, error } = await supabase.from('posts').select('*')
 
-  console.log(posts)
-
   return (
     <main className='flex items-center justify-center'>
-      <section className='max-w-[600px]'>
+      <section className='max-w-[500px]'>
         {posts.map((post) => {
           return (
             <>
