@@ -1,21 +1,9 @@
-function IconShare({ props }) {
-  return (
-    <svg
-      viewBox='0 0 24 24'
-      fill='currentColor'
-      height='1.5rem'
-      width='1.5rem'
-      {...props}
-    >
-      <path d='M21 12l-7-7v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7z' />
-    </svg>
-  )
-}
+import { IconSend } from '@tabler/icons-react'
 
 export default function LikeBtn() {
   return (
     <button>
-      <IconShare />
+      <IconSend className='h-6 w-6' />
     </button>
   )
 }
