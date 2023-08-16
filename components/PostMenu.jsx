@@ -1,11 +1,19 @@
 'use client'
 
 import {
+  IconShare2,
+  IconHandStop,
+  IconStar,
+  IconUserMinus,
+  IconDots
+} from '@tabler/icons-react'
+
+import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem
-} from '@nextui-org/react'
+} from '@nextui-org/dropdown'
 
 import { Button } from '@nextui-org/button'
 
@@ -13,14 +21,25 @@ export default function PostMenu() {
   return (
     <Dropdown backdrop='blur'>
       <DropdownTrigger>
-        <Button variant='bordered'>Open Menu</Button>
+        <IconDots className='cursor-pointer' />
       </DropdownTrigger>
       <DropdownMenu aria-label='Static Actions'>
-        <DropdownItem key='new'>New file</DropdownItem>
-        <DropdownItem key='copy'>Copy link</DropdownItem>
-        <DropdownItem key='edit'>Edit file</DropdownItem>
-        <DropdownItem key='delete' className='text-danger' color='danger'>
-          Delete file
+        <DropdownItem key='share' startContent={<IconShare2 />}>
+          Share post
+        </DropdownItem>
+        <DropdownItem key='hide' startContent={<IconHandStop />}>
+          Not interested
+        </DropdownItem>
+        <DropdownItem key='edit' startContent={<IconStar />}>
+          favorites
+        </DropdownItem>
+        <DropdownItem
+          key='delete'
+          startContent={<IconUserMinus />}
+          className='text-danger'
+          color='danger'
+        >
+          Unfollow
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
