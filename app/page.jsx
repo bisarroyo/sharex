@@ -1,6 +1,5 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-import { Button } from '@nextui-org/button'
 import Post from '@/components/Post'
 
 export default async function Home() {

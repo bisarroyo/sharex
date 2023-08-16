@@ -2,8 +2,6 @@
 
 import { usePathname } from 'next/navigation'
 
-import styles from './styles/footer.module.css'
-
 // home icon
 import { RiHome2Line } from 'react-icons/ri'
 
@@ -33,40 +31,40 @@ export default function Footer() {
   const path = usePathname()
 
   return (
-    <footer className={styles.footer}>
+    <footer className='fixed bottom-0 h-[60px] w-screen backdrop-blur-lg flex flex-row justify-around items-center z-10'>
       <Link href='/'>
-        <div className={styles.home}>
+        <div className=''>
           {path === '/' ? (
-            <RiHome2Fill className={styles.homeIcon} />
+            <RiHome2Fill className='' />
           ) : (
-            <RiHome2Line className={styles.homeIcon} />
+            <RiHome2Line className='' />
           )}
         </div>
       </Link>
       <Link href='/upload'>
-        <div className={styles.messages}>
+        <div className=''>
           {path === '/upload' ? (
-            <BsPlusCircleFill className={styles.createIcon} />
+            <BsPlusCircleFill className='' />
           ) : (
-            <BsPlusCircle className={styles.createIcon} />
+            <BsPlusCircle className='' />
           )}
         </div>
       </Link>
       <Link href='/messages'>
-        <div className={styles.messages}>
+        <div className=''>
           {path === '/messages' ? (
-            <RiChat4Fill className={styles.messagesIcon} />
+            <RiChat4Fill className='' />
           ) : (
-            <RiChat4Line className={styles.messagesIcon} />
+            <RiChat4Line className='' />
           )}
         </div>
       </Link>
       <Link href='/profile'>
-        <div className={styles.profile}>
+        <div className=''>
           {path === '/profile' ? (
-            <BsPersonFill className={styles.profileIcon} />
+            <BsPersonFill className='' />
           ) : (
-            <BsPerson className={styles.profileIcon} />
+            <BsPerson className='' />
           )}
         </div>
       </Link>
