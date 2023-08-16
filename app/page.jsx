@@ -11,14 +11,16 @@ export default async function Home() {
   console.log(posts)
 
   return (
-    <main className=''>
-      {posts.map((post) => {
-        return (
-          <>
-            <Post key={post.id} postImages={post.images} />
-          </>
-        )
-      })}
+    <main className='flex items-center justify-center'>
+      <section className='max-w-[600px]'>
+        {posts.map((post) => {
+          return (
+            <>
+              <Post key={post.id} postImages={post.images} />
+            </>
+          )
+        })}
+      </section>
     </main>
   )
 }
