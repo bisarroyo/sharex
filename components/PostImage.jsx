@@ -36,7 +36,7 @@ export default function PostImage({ postImages }) {
 
   return (
     <Swiper
-      pagination={sliderImages.length > 1 ? { type: 'fraction' } : null}
+      pagination={{ type: 'fraction' }}
       navigation={false}
       modules={[Pagination, Navigation]}
       className='mySwiper'
