@@ -11,7 +11,6 @@ export default function UploadFile({ uploading, handleUpload }) {
   const [selectedFile, setSelectedFile] = useState(null)
 
   const onDrop = useCallback((acceptedFiles) => {
-    // Si se selecciona más de un archivo, seleccionamos solo el primero
     setSelectedFile(acceptedFiles)
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
