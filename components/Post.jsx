@@ -38,8 +38,8 @@ export default function Post({ postImages, profileImage, username }) {
         </div>
       </div>
       <div className='w-full flex justify-center items-center'>
-        <Image src={post} alt='' priority={false} width='auto' height='auto' />
-        {/* <PostImage postImages={postImages} /> */}
+        {/* <Image src={post} alt='' priority={false} width='auto' height='auto' /> */}
+        <PostImage postImages={postImages} />
       </div>
       <div className='flex justify-between p-2'>
         <div className=''>

@@ -11,3 +11,11 @@
   background-color: rgba(var(--light-purple-rgb), 0.3);
   border-radius: 10px;
 }
+.swiper-wrapper {
+  width: 100vw;
+  height: 300px;
+}
+
+/* .swiper .swiper-pagination {
+  display: none;
+} */
