@@ -31,10 +31,10 @@ export default function Upload() {
       const { data: posts, error } = await supabase.from('posts').insert({
         user: user.id,
         order: 1,
-        is_public: true
-        // images: cloudImageUrl
+        is_public: true,
+        metadata: { images: cloudImageUrl }
       })
-      // router.push('/')
+      router.push('/')
       router.refresh()
     }
     if (cloudImageUrl) {
