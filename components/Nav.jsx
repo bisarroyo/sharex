@@ -14,15 +14,15 @@ export default async function Nav() {
   const supabase = createServerComponentClient({ cookies })
 
   const {
-    data: { user }
-  } = await supabase.auth.getUser()
+    data: { session }
+  } = await supabase.auth.getSession()
   return (
     <Navbar shouldHideOnScroll className='border-b'>
       <NavbarBrand>
         <p className='font-bold text-inherit'>SHAREX</p>
       </NavbarBrand>
       <NavbarContent justify='end'>
-        {user ? (
+        {session ? (
           <NavbarItem>
             <Button as={Link} color='primary' href='#' variant='flat'>
               Logout
@@ -33,6 +33,7 @@ export default async function Nav() {
             <NavbarItem className='hidden lg:flex'>
               <Link href='/login'>Login</Link>
             </NavbarItem>
+            <p>or</p>
             <NavbarItem>
               <Button as={Link} color='primary' href='/signup' variant='flat'>
                 Sign Up
