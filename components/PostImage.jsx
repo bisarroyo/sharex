@@ -26,7 +26,7 @@ export default function PostImage({ postImages }) {
   useEffect(() => {
     const processedImages = postImages.map((element) => {
       return getCldImageUrl({
-        width: 960,
+        width: 1080,
         height: 'auto',
         src: element
       })
@@ -36,22 +36,22 @@ export default function PostImage({ postImages }) {
 
   return (
     <Swiper
-      pagination={{
-        type: 'fraction'
-      }}
+      pagination={sliderImages.length > 1 ? { type: 'fraction' } : null}
       navigation={false}
       modules={[Pagination, Navigation]}
       className='mySwiper'
       style={{ width: '100%', height: '100%' }}
     >
       {sliderImages.map((file, index) => (
-        <SwiperSlide key={index}>
-          <Image
-            src={file}
-            alt='Archivo seleccionado'
-            fill={true}
-            style={{ objectFit: 'contain' }}
-          />
+        <SwiperSlide key={index} className='swiper-slide'>
+          <div className='image-container'>
+            <Image
+              src={file}
+              alt='Archivo seleccionado'
+              fill={true}
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
         </SwiperSlide>
       ))}
     </Swiper>

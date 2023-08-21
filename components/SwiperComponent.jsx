@@ -18,9 +18,7 @@ import './styles/swiper.css'
 export default function SwiperComponent({ images }) {
   return (
     <Swiper
-      pagination={{
-        type: 'fraction'
-      }}
+      pagination={sliderImages.length > 1 ? { type: 'fraction' } : null}
       navigation={false}
       modules={[Pagination, Navigation]}
       className='mySwiper'
