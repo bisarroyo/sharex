@@ -1,3 +1,5 @@
+import ProviderApp from './provider.js'
+
 import { Providers } from './providers'
 
 import './globals.css'
@@ -17,15 +19,17 @@ export const dynamic = 'force-dynamic'
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-        <Providers>
-          <div className='dark text-foreground bg-background'>
-            <Nav />
-            {children}
-            <Footer />
-          </div>
-        </Providers>
-      </body>
+      <ProviderApp>
+        <body className={inter.className}>
+          <Providers>
+            <div className='dark text-foreground bg-background'>
+              <Nav />
+              {children}
+              <Footer />
+            </div>
+          </Providers>
+        </body>
+      </ProviderApp>
     </html>
   )
 }

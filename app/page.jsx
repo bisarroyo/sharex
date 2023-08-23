@@ -1,6 +1,9 @@
 'use client'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { postsSlice } from './reducers/slice'
+
 import Post from '@/components/Post'
 import { useEffect, useState } from 'react'
 
@@ -8,6 +11,9 @@ export default function Home() {
   const [postsWithImages, setPostsWithImages] = useState([])
   const [loading, setLoading] = useState(false)
   const supabase = createClientComponentClient()
+
+  const posts = useSelector((state) => state.posts)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const getPosts = async () => {
@@ -35,7 +41,6 @@ export default function Home() {
 
           const imagesArray = images.map((image) => image.image_url)
           postsWithImagesArray.push({ ...post, images: imagesArray })
-          // console.log(imagesArray)
         }
 
         setPostsWithImages(postsWithImagesArray)
@@ -43,12 +48,13 @@ export default function Home() {
         console.error(error)
       } finally {
         setLoading(false)
+        dispatch(postsSlice(postsWithImages))
       }
     }
     getPosts()
-  }, [supabase])
+  }, [supabase, dispatch, postsWithImages])
 
-  console.log(postsWithImages)
+  console.log(posts)
 
   return (
     <main className='flex items-center justify-center pb-[60px]'>

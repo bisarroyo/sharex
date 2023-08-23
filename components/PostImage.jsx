@@ -50,6 +50,7 @@ export default function PostImage({ postImages }) {
               alt='Archivo seleccionado'
               fill={true}
               style={{ objectFit: 'contain' }}
+              priority={false}
             />
           </div>
         </SwiperSlide>
