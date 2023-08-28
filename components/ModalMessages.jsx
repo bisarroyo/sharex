@@ -8,10 +8,18 @@ import {
   ModalFooter
 } from '@nextui-org/modal'
 import { Button } from '@nextui-org/button'
-import { useDisclosure } from '@nextui-org/use-disclosure'
+import { useState } from 'react'
 
 export default function ModalMessages() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   return (
     <>
@@ -19,13 +27,13 @@ export default function ModalMessages() {
         <Button
           variant='flat'
           color='warning'
-          onPress={onOpen()}
+          onPress={handleOpen}
           className='capitalize'
         >
           Hola
         </Button>
       </div>
-      <Modal backdrop='blur' isOpen={isOpen} onClose={onClose}>
+      <Modal backdrop='blur' isOpen={open} onClose={handleClose}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -53,10 +61,10 @@ export default function ModalMessages() {
                 </p>
               </ModalBody>
               <ModalFooter>
-                <Button color='danger' variant='light' onClick={onClose}>
+                <Button color='danger' variant='light' onClick={handleClose}>
                   Close
                 </Button>
-                <Button color='primary' onPress={onClose}>
+                <Button color='primary' onPress={handleClose}>
                   Action
                 </Button>
               </ModalFooter>
