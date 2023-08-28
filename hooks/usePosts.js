@@ -2,7 +2,12 @@
 import { useEffect, useState } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { loadPosts } from '../app/reducers/slice'
+
 export default function usePosts() {
+  const dispatch = useDispatch()
+
   const [postsWithImages, setPostsWithImages] = useState([])
   const [loading, setLoading] = useState(false)
   const supabase = createClientComponentClient()
@@ -34,7 +39,7 @@ export default function usePosts() {
           postsWithImagesArray.push({ ...post, images: imagesArray })
         }
 
-        setPostsWithImages(postsWithImagesArray)
+        dispatch(loadPosts(postsWithImagesArray))
       } catch (error) {
         console.error(error)
       } finally {
@@ -42,10 +47,9 @@ export default function usePosts() {
       }
     }
     getPosts()
-  }, [supabase])
+  }, [supabase, dispatch])
 
   return {
-    postsWithImages,
     loading
   }
 }

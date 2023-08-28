@@ -7,7 +7,7 @@ export const postsSlice = createSlice({
   },
   reducers: {
     loadPosts: (state, action) => {
-      state.posts = []
+      state.posts = [...state.posts, ...action.payload]
     }
   }
 })

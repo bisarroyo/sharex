@@ -1,5 +1,4 @@
 'use client'
-
 import { getCldImageUrl } from 'next-cloudinary'
 // import SwiperComponent from './SwiperComponent'
 
@@ -51,6 +50,7 @@ export default function PostImage({ postImages }) {
               fill={true}
               style={{ objectFit: 'contain' }}
               priority={false}
+              loading='lazy'
             />
           </div>
         </SwiperSlide>
