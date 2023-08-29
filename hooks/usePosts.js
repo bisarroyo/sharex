@@ -8,23 +8,35 @@ import { loadPosts } from '../app/reducers/slice'
 export default function usePosts() {
   const dispatch = useDispatch()
 
-  const [postsWithImages, setPostsWithImages] = useState([])
+  const posts = useSelector((state) => state.posts.posts)
+
   const [loading, setLoading] = useState(false)
+  const [initialLoad, setInitialLoad] = useState(true)
+  const [offset, setOffset] = useState(0) // Keep track of loaded posts offset
+  const [limit, setLimit] = useState(5) // Number of posts to load per batch
+  const [prevScrollY, setPrevScrollY] = useState(0)
+  const [isScrolling, setIsScrolling] = useState(false)
+
   const supabase = createClientComponentClient()
+
   useEffect(() => {
-    const getPosts = async () => {
+    const loadMorePosts = async () => {
       try {
         setLoading(true)
-        let { data: posts, error } = await supabase.from('posts').select('*')
+        let { data: newPosts, error } = await supabase
+          .from('posts')
+          .select('*')
+          .range(offset, offset + limit - 1)
 
         if (error) {
           console.error(error)
-          return []
+          return
         }
+        console.log(offset)
 
         const postsWithImagesArray = []
 
-        for (const post of posts) {
+        for (const post of newPosts) {
           const { data: images, error: imageError } = await supabase
             .from('post_images')
             .select('image_url')
@@ -39,15 +51,54 @@ export default function usePosts() {
           postsWithImagesArray.push({ ...post, images: imagesArray })
         }
 
-        dispatch(loadPosts(postsWithImagesArray))
+        dispatch(loadPosts([...postsWithImagesArray])) // Append new posts to existing posts
+        setOffset((prevOffset) => prevOffset + limit) // Update the offset for the next batch
       } catch (error) {
         console.error(error)
       } finally {
         setLoading(false)
       }
+      setPrevScrollY(window.scrollY)
+      setIsScrolling(false) // Reset scrolling flag
     }
-    getPosts()
-  }, [supabase, dispatch])
+
+    const handleScroll = () => {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight
+      const scrolledDistance = window.scrollY
+
+      if (
+        !isScrolling &&
+        scrolledDistance > prevScrollY &&
+        scrolledDistance >= scrollableHeight * 0.8 &&
+        !loading
+      ) {
+        setIsScrolling(true)
+        loadMorePosts() // Cargar más contenido cuando se acerca al 80% del scroll
+      }
+      setPrevScrollY(scrolledDistance)
+    }
+
+    if (initialLoad) {
+      loadMorePosts() // Load initial posts
+      setInitialLoad(false)
+    }
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll) // Limpieza al desmontar el componente
+    }
+  }, [
+    dispatch,
+    offset,
+    limit,
+    loading,
+    posts,
+    supabase,
+    initialLoad,
+    prevScrollY,
+    isScrolling
+  ])
 
   return {
     loading
