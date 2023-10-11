@@ -11,6 +11,7 @@ import PostMenu from '@/components/PostMenu'
 import profile from '@/assets/profile/profile.jpg'
 import post from '@/assets/post/post.jpg'
 import PostImage from './PostImage'
+import PostComment from './PostComment'
 
 export default function Post({ postImages, profileImage, username }) {
   return (
@@ -51,6 +52,10 @@ export default function Post({ postImages, profileImage, username }) {
           <LikeBtn />
         </div>
       </div>
+      <PostComment
+        user='bismark'
+        comment='Pasenadola linae del tiem,po de un texto que se debe ocultar en la linea 2, debo escribir mas texto para que se muestren los puntos uspensivos'
+      />
       <Divider className='mt-2' />
     </section>
   )
